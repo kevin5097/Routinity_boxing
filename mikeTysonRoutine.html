@@ -1,14 +1,128 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>mikeTysonRoutine</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <title>Mike Tyson 훈련 루틴</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      padding: 2rem;
+      background-color: #f4f4f4;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    section {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    .quote {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
 <body>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css" />
+  <h1>🐅 마이크 타이슨 전성기 훈련 루틴</h1>
+  <p class="quote" id="quote"></p>
+
+  <section>
+    <h2>🔔 하루 일과</h2>
+    <ul id="daily-schedule"></ul>
+  </section>
+
+  <section>
+    <h2>🥊 복싱 훈련</h2>
+    <ul id="boxing-routine"></ul>
+  </section>
+
+  <section>
+    <h2>💪 보디웨이트 & 웨이트 훈련</h2>
+    <ul id="bodyweight-training"></ul>
+  </section>
+
+  <section>
+    <h2>🧠 멘탈 훈련</h2>
+    <ul id="mental-training"></ul>
+  </section>
+
+  <section>
+    <h2>🍽️ 식단 예시</h2>
+    <ul id="diet"></ul>
+  </section>
+
+  <section>
+    <h2>🔥 루틴의 핵심</h2>
+    <ul id="highlights"></ul>
+  </section>
+
+  <script type="module">
     import mikeTysonRoutine from './mikeTysonRoutine.js';
-    console.log("🔥 타이슨 하루 일과:");
+
+    // 명언
+    document.getElementById("quote").textContent = `"${mikeTysonRoutine.quote.text}" - ${mikeTysonRoutine.quote.author}`;
+
+    // 하루 일과
+    const dailyUl = document.getElementById("daily-schedule");
+    mikeTysonRoutine.dailySchedule.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.time} - ${item.activity}`;
+      dailyUl.appendChild(li);
+    });
+
+    // 복싱 훈련
+    const boxingUl = document.getElementById("boxing-routine");
+    mikeTysonRoutine.boxingRoutine.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.item}: ${item.detail}`;
+      boxingUl.appendChild(li);
+    });
+
+    // 웨이트 & 보디웨이트
+    const bodyUl = document.getElementById("bodyweight-training");
+    mikeTysonRoutine.bodyweightTraining.forEach(ex => {
+      const li = document.createElement("li");
+      li.textContent = `${ex.exercise} - ${ex.reps}, ${ex.sets}`;
+      bodyUl.appendChild(li);
+    });
+
+    // 멘탈 트레이닝
+    const mentalUl = document.getElementById("mental-training");
+    mikeTysonRoutine.mentalTraining.forEach(point => {
+      const li = document.createElement("li");
+      li.textContent = point;
+      mentalUl.appendChild(li);
+    });
+
+    // 식단
+    const dietUl = document.getElementById("diet");
+    const { breakfast, lunch, dinner, supplements } = mikeTysonRoutine.sampleDiet;
+    dietUl.innerHTML = `
+      <li><strong>아침:</strong> ${breakfast.join(', ')}</li>
+      <li><strong>점심:</strong> ${lunch.join(', ')}</li>
+      <li><strong>저녁:</strong> ${dinner.join(', ')}</li>
+      <li><strong>보충:</strong> ${supplements.join(', ')}</li>
+    `;
+
+    // 루틴의 핵심
+    const highlightUl = document.getElementById("highlights");
+    mikeTysonRoutine.routineHighlights.forEach(point => {
+      const li = document.createElement("li");
+      li.innerHTML = `<strong>${point.feature}:</strong> ${point.description}`;
+      highlightUl.appendChild(li);
+    });
+  </script>
 </body>
 </html>
+

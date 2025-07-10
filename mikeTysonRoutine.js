@@ -2,7 +2,7 @@
 
 const mikeTysonRoutine = {
   quote: {
-    text: "The hero and the coward both feel the same thing. But the hero uses his fear, projects it onto his opponent.",
+    text: "영웅과 겁쟁이는 똑같은 감정을 느낀다. 하지만 영웅은 그 두려움을 이용해 그것을 상대에게 투사한다.",
     author: "Mike Tyson"
   },
 

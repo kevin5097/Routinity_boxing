@@ -3,10 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <title>Mayweather 체크리스트</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #222;
+      margin-bottom: 2rem;
+    }
+
+    .checklist-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .exercise-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fefefe;
+      transition: background-color 0.3s;
+    }
+
+    .exercise-item:hover {
+      background-color: #f1f1f1;
+    }
+
+    .exercise-item input[type="checkbox"] {
+      margin-right: 1rem;
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+
+      .checklist-container {
+        padding: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>플로이드 메이워더 훈련 체크리스트</h1>
-  <div id="checklist"></div>
+  <h1>🥊 플로이드 메이웨더 훈련 체크리스트</h1>
+  <div class="checklist-container" id="checklist"></div>
 
   <script>
     const mayweatherRoutine = [
@@ -24,8 +79,9 @@
 
     mayweatherRoutine.forEach((exercise, idx) => {
       const item = document.createElement('div');
+      item.className = 'exercise-item';
       item.innerHTML = `
-        <label>
+        <label for="exercise-${idx}">
           <input type="checkbox" id="exercise-${idx}" />
           ${exercise.name} - ${exercise.sets}세트, ${exercise.duration}
         </label>

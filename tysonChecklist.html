@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mike Tyson 훈련 체크리스트</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f3f4f6;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #111;
+      margin-bottom: 2rem;
+    }
+
+    .checklist-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .exercise-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fefefe;
+      transition: background-color 0.3s;
+    }
+
+    .exercise-item:hover {
+      background-color: #f1f1f1;
+    }
+
+    .exercise-item input[type="checkbox"] {
+      margin-right: 1rem;
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>🥊 타이슨 실전 훈련 체크리스트</h1>
+  <div class="checklist-container" id="checklist"></div>
+
+  <script>
+    const tysonGymRoutine = [
+      { name: "줄넘기", sets: 5, duration: "3분" },
+      { name: "스파링", sets: 10, duration: "3분" },
+      { name: "백워크 / 미트 훈련", sets: 1, duration: "60분" },
+      { name: "딥스", sets: 3, reps: "15회", duration: "5분" },
+      { name: "푸쉬업", sets: 3, reps: "25회", duration: "5분" },
+      { name: "풀업 또는 랫풀다운", sets: 3, reps: "10~12회", duration: "7분" },
+      { name: "덤벨 숄더 프레스", sets: 3, reps: "12회", duration: "5분" },
+      { name: "덤벨 스쿼트 또는 레그프레스", sets: 3, reps: "12~15회", duration: "7분" },
+      { name: "메디신볼 슬램", sets: 3, reps: "15회", duration: "5분" },
+      { name: "플랭크 & 사이드 플랭크", sets: 3, reps: "60초", duration: "5분" },
+      { name: "러시안 트위스트", sets: 3, reps: "20회", duration: "5분" },
+      { name: "복근 운동 (낮)", sets: 5, duration: "500회 (총합)" },
+      { name: "복근 운동 (밤)", sets: 5, duration: "400회" },
+      { name: "자전거 or 러닝", sets: 1, duration: "30~60분" }
+    ];
+
+    const checklist = document.getElementById('checklist');
+
+    tysonGymRoutine.forEach((ex, i) => {
+      const div = document.createElement('div');
+      div.className = 'exercise-item';
+      div.innerHTML = `
+        <label for="tyson-${i}">
+          <input type="checkbox" id="tyson-${i}" />
+          ${ex.name} - ${ex.sets}세트, ${ex.duration}
+        </label>
+      `;
+      checklist.appendChild(div);
+    });
+  </script>
+</body>
+</html>

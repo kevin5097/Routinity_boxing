@@ -65,7 +65,21 @@
     <h2>🔥 루틴 특징 요약</h2>
     <ul id="highlights"></ul>
   </section>
-<button id="startRoutineBtn">루틴 따라 하기</button>
+<section style="text-align: center; margin-top: 2rem;">
+  <button id="startRoutineBtn" style="
+    background: linear-gradient(135deg, #ff6b6b, #f06595);
+    color: white;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  ">
+    💥 루틴 따라 하기
+  </button>
+</section>
   <script type="module">
     import floydMayweatherRoutine from './floydMayweatherRoutine.js';
 
@@ -118,6 +132,16 @@
       // 체크리스트 페이지로 이동
       window.location.href = 'mayweatherChecklist.html';
     });
+      document.getElementById('startRoutineBtn').addEventListener('mouseover', () => {
+    const btn = document.getElementById('startRoutineBtn');
+    btn.style.transform = 'scale(1.05)';
+    btn.style.boxShadow = '0 6px 16px rgba(0,0,0,0.3)';
+  });
+  document.getElementById('startRoutineBtn').addEventListener('mouseout', () => {
+    const btn = document.getElementById('startRoutineBtn');
+    btn.style.transform = 'scale(1)';
+    btn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+  });
   </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 const dmitryBivolRoutine = {
   quote: {
-    text: "Discipline and consistency. That’s my mindset every day.",
+    text: "절제와 꾸준함. 그게 매일의 내 마음가짐이다.",
     author: "Dmitry Bivol"
   },
 

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dmitry Bivol 훈련 루틴</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #eef1f5;
+      padding: 2rem;
+    }
+    section {
+      background: #fff;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: #222;
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    .quote {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🥊 드미트리 비볼 훈련 루틴</h1>
+  <p class="quote" id="quote"></p>
+
+  <section>
+    <h2>⏱ 하루 일과</h2>
+    <ul id="daily-schedule"></ul>
+  </section>
+
+  <section>
+    <h2>🥋 복싱 훈련</h2>
+    <ul id="boxing-routine"></ul>
+  </section>
+
+  <section>
+    <h2>💪 근력 및 민첩성</h2>
+    <ul id="strength-training"></ul>
+  </section>
+
+  <section>
+    <h2>🧠 멘탈 트레이닝</h2>
+    <ul id="mental-training"></ul>
+  </section>
+
+  <section>
+    <h2>🍽️ 식단 예시</h2>
+    <ul id="diet"></ul>
+  </section>
+
+  <section>
+    <h2>🔥 루틴의 핵심</h2>
+    <ul id="highlights"></ul>
+  </section>
+
+  <script type="module">
+    import dmitryBivolRoutine from './dmitryBivolRoutine.js';
+
+    document.getElementById("quote").textContent = `"${dmitryBivolRoutine.quote.text}" - ${dmitryBivolRoutine.quote.author}`;
+
+    const dailyUl = document.getElementById("daily-schedule");
+    dmitryBivolRoutine.dailySchedule.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.time} - ${item.activity}`;
+      dailyUl.appendChild(li);
+    });
+
+    const boxingUl = document.getElementById("boxing-routine");
+    dmitryBivolRoutine.boxingRoutine.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.item}: ${item.detail}`;
+      boxingUl.appendChild(li);
+    });
+
+    const strengthUl = document.getElementById("strength-training");
+    dmitryBivolRoutine.strengthConditioning.forEach(ex => {
+      const li = document.createElement("li");
+      li.textContent = `${ex.exercise} - ${ex.reps}, ${ex.sets}`;
+      strengthUl.appendChild(li);
+    });
+
+    const mentalUl = document.getElementById("mental-training");
+    dmitryBivolRoutine.mentalTraining.forEach(point => {
+      const li = document.createElement("li");
+      li.textContent = point;
+      mentalUl.appendChild(li);
+    });
+
+    const dietUl = document.getElementById("diet");
+    const { breakfast, lunch, dinner, supplements } = dmitryBivolRoutine.sampleDiet;
+    dietUl.innerHTML = `
+      <li><strong>아침:</strong> ${breakfast.join(', ')}</li>
+      <li><strong>점심:</strong> ${lunch.join(', ')}</li>
+      <li><strong>저녁:</strong> ${dinner.join(', ')}</li>
+      <li><strong>보충:</strong> ${supplements.join(', ')}</li>
+    `;
+
+    const highlightUl = document.getElementById("highlights");
+    dmitryBivolRoutine.routineHighlights.forEach(point => {
+      const li = document.createElement("li");
+      li.innerHTML = `<strong>${point.feature}:</strong> ${point.description}`;
+      highlightUl.appendChild(li);
+    });
+  </script>
+</body>
+</html>

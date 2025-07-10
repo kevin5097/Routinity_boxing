@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mayweather 체크리스트</title>
+</head>
+<body>
+  <h1>플로이드 메이워더 훈련 체크리스트</h1>
+  <div id="checklist"></div>
+
+  <script>
+    const mayweatherRoutine = [
+      { name: "러닝", sets: 1, duration: "40분" },
+      { name: "줄넘기", sets: 5, duration: "3분" },
+      { name: "쉐도우 복싱", sets: 5, duration: "3분" },
+      { name: "스파링", sets: 6, duration: "3분" },
+      { name: "미트 작업", sets: 10, duration: "3분" },
+      { name: "웨이트 트레이닝 및 코어 운동", sets: 1, duration: "45분" },
+      { name: "복싱 기술 및 드릴", sets: 1, duration: "30분" },
+      { name: "스트레칭 및 유연성 운동", sets: 1, duration: "15분" },
+    ];
+
+    const checklistContainer = document.getElementById('checklist');
+
+    mayweatherRoutine.forEach((exercise, idx) => {
+      const item = document.createElement('div');
+      item.innerHTML = `
+        <label>
+          <input type="checkbox" id="exercise-${idx}" />
+          ${exercise.name} - ${exercise.sets}세트, ${exercise.duration}
+        </label>
+      `;
+      checklistContainer.appendChild(item);
+    });
+  </script>
+</body>
+</html>

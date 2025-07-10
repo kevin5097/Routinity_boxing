@@ -65,7 +65,8 @@
     <h2>🔥 루틴 특징 요약</h2>
     <ul id="highlights"></ul>
   </section>
-
+  <!-- 루틴 따라 하기 버튼 -->
+  <button id="startRoutineBtn">루틴 따라 하기</button>
   <script type="module">
     import floydMayweatherRoutine from './floydMayweatherRoutine.js';
 
@@ -113,6 +114,10 @@
       const li = document.createElement("li");
       li.innerHTML = `<strong>${point.feature}:</strong> ${point.description}`;
       highlightUl.appendChild(li);
+    });
+      document.getElementById('startRoutineBtn').addEventListener('click', () => {
+      // 체크리스트 페이지로 이동
+      window.location.href = 'mayweatherChecklist.html';
     });
   </script>
 </body>

@@ -2,7 +2,7 @@
 
 const floydMayweatherRoutine = {
   quote: {
-    text: "Hard work. Dedication.",
+    text: "노력. 헌신.",
     author: "Floyd Mayweather Jr."
   },
 

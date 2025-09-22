@@ -1,3 +1,6 @@
+// ===========================
+// 체크리스트 렌더링 함수
+// ===========================
 function renderList(id, items) {
     const list = document.getElementById(id);
     if (!list) return;
@@ -26,9 +29,7 @@ function renderList(id, items) {
         checkbox.addEventListener("change", () => {
             localStorage.setItem(checkboxKey, checkbox.checked);
             const now = new Date();
-            const timeString = now.toLocaleTimeString("ko-KR", {
-                hour: '2-digit', minute: '2-digit'
-            });
+            const timeString = now.toLocaleTimeString("ko-KR", { hour: '2-digit', minute: '2-digit' });
 
             if (checkbox.checked) {
                 localStorage.setItem(timeKey, timeString);
@@ -52,7 +53,9 @@ function renderList(id, items) {
     });
 }
 
+// ===========================
 // 체크 이력 저장
+// ===========================
 function saveHistory(date, listId, index, label, checked, time) {
     const historyKey = `history-${date}`;
     let history = JSON.parse(localStorage.getItem(historyKey)) || [];
@@ -68,7 +71,9 @@ function saveHistory(date, listId, index, label, checked, time) {
     localStorage.setItem(historyKey, JSON.stringify(history));
 }
 
+// ===========================
 // 히스토리 보기
+// ===========================
 function showHistory() {
     const container = document.getElementById("history-container");
     container.innerHTML = "";
@@ -100,32 +105,67 @@ function showHistory() {
 }
 window.showHistory = showHistory;
 
-const workCheck = [
-  "줄넘기 3분 × 5세트 (워밍업 및 심박수 올리기)",
-  "인터벌 러닝 3세트 (30초 전력 질주 / 30초 아령 쉐도우 총 10번)",
-  "복싱 - 새도우 복싱 3분 × 3라운드 (폼 점검, 풋워크, 콤보 연습)",
-  "복싱 - 샌드백 3분 × 5라운드 (파워와 스피드, 정확성 강화)",
-  "복싱 - 스파링 or 미트",
-  "하체 - 점프 스쿼트 3세트 × 12회",
-  "하체 - 덤벨 20KG 스텝업 4세트 × 12회",
-  "하체 - 케틀벨 스윙 16KG 4세트 × 15회",
-  "코어 - 리버스 크런치 3세트 × 15회 (복부 하부 강화)",
-  "코어 - 플랭크 3세트 × 1분 유지 (복부 및 체간 안정성)",
-  "코어 - 바이시클 크런치 3세트 × 20회 (복부 측면 및 전면 근육)",
-  "배틀로프 15초 전력질주 × 5세트 (상체 및 심폐 능력 강화)"
+// ===========================
+// 월~일 운동 루틴 체크리스트
+// ===========================
+
+const mondayRoutine = [
+    "줄넘기 3분 × 5세트 (워밍업 및 심박수 올리기)",
+    "벤치프레스 4세트 × 8~10",
+    "덤벨 플라이 3세트 × 10~12",
+    "풀업 / 랫풀다운 4세트 × 8~12",
+    "덤벨 숄더프레스 3세트 × 10~12",
+    "메디신 볼 토스 3세트 × 10",
+    "행잉 레그 레이즈 3세트 × 12~15"
 ];
 
-const workCheck2 = [
-  "줄넘기 3분 × 5세트 (워밍업 및 심박수 올리기)",
-  "ZONE2 러닝 30~40분 ",
-  "복싱 - 새도우 복싱 3분 × 3라운드 (폼 점검, 풋워크, 콤보 연습)",
-  "복싱 - 샌드백 3분 × 5라운드 (파워와 스피드, 정확성 강화)",
-  "복싱 - 스파링 or 미트",
-  "상체 - 푸쉬업 3세트 × 15회 (상체 근력 및 체간 안정)",
-  "상체 - 숄더 프레스 3세트 × 12회 (어깨 강화)",
-  "상체 - 풀 or 어시스티드 풀업 3세트 × 10회",
-  "코어 - 사이드 플랭크 3세트 × 30초 (복부 측면 강화)"
+const tuesdayRoutine = [
+    "점핑잭 + 가벼운 스쿼트 5분 (워밍업)",
+    "바벨 스쿼트 / 레그프레스 4세트 × 8~10",
+    "루마니안 데드리프트 3세트 × 8~12",
+    "박스 점프 3세트 × 6~8",
+    "런지 + 덤벨 3세트 × 10",
+    "러시안 트위스트 3세트 × 15"
 ];
 
-renderList("work-list", workCheck);
-renderList("work-list2", workCheck2);
+const wednesdayRoutine = [
+    "줄넘기 3분 × 5세트",
+    "케이블 로우 / 덤벨 로우 3세트 × 10~12",
+    "딥스 / 트라이셉스 푸쉬다운 3세트 × 10~12",
+    "버피 + 메디신 볼 콤보 3세트 × 10",
+    "인터벌 러닝 15~20분 (30초 전력/60초 걷기)",
+    "플랭크 3세트 × 60초"
+];
+
+const thursdayRoutine = [
+    "드리블 + 점프 워밍업 5분",
+    "5:5 풀코트 게임 30~40분",
+    "샷 연습 + 드리블 훈련 20~25분",
+    "줄넘기 3분 × 3세트",
+    "메디신 볼 러시안 트위스트 3세트 × 15"
+];
+
+const fridayRoutine = [
+    "줄넘기 3분 × 5세트",
+    "슈퍼세트: 스쿼트 → 벤치 → 데드리프트 3세트 × 6~8",
+    "박스 점프 / 버피 3세트 × 6~8",
+    "덤벨 스내치 / 케틀벨 스윙 3세트 × 10",
+    "행잉 레그 레이즈 + 플랭크 3세트 × 12~15 / 60초"
+];
+
+const sundayRoutine = [
+    "드리블 + 점프 워밍업 5분",
+    "5:5 풀코트 게임 30~40분",
+    "스프린트 인터벌 10~15초 × 10회",
+    "줄넘기 3분 × 3세트"
+];
+
+// ===========================
+// 렌더링
+// ===========================
+renderList("monday-list", mondayRoutine);
+renderList("tuesday-list", tuesdayRoutine);
+renderList("wednesday-list", wednesdayRoutine);
+renderList("thursday-list", thursdayRoutine);
+renderList("friday-list", fridayRoutine);
+renderList("sunday-list", sundayRoutine);

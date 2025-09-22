@@ -26,3 +26,86 @@ li {
 input[type="checkbox"] {
     margin-right: 10px;
 }
+body {
+    font-family: 'Pretendard Variable', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.routine-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.day-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 15px;
+    width: 300px;
+    max-height: 400px; /* 높이 제한 */
+    display: flex;
+    flex-direction: column;
+}
+
+.day-card h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #0077ff;
+    text-align: center;
+}
+
+.scroll-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* 체크박스 + 라벨 */
+.scroll-list li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.scroll-list li label {
+    margin-left: 8px;
+    flex-grow: 1;
+}
+
+/* 체크 완료 시간 */
+.scroll-list li span {
+    margin-left: 10px;
+    color: green;
+    font-size: 0.85rem;
+}
+
+/* 버튼 */
+button {
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #0077ff;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005fcc;
+}
